@@ -6,7 +6,22 @@ export type TaskDocument = Task & Document;
 @Schema()
 export class Task {
   @Prop()
-  name: string;
+  gardenName: string;
+
+  @Prop()
+  gardenGeo: string;
+
+  @Prop()
+  taskName: string;
+
+  @Prop()
+  taskSummary: string;
+
+  @Prop()
+  taskStatus: Boolean;
+
+  @Prop()
+  plantsIds: Array<string>;
 
 }
 
