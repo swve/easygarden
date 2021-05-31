@@ -9,7 +9,7 @@ export class Task {
   gardenName: string;
 
   @Prop()
-  gardenGeo: string;
+  gardenPreciseGeo: Array<string>;
 
   @Prop()
   taskName: string;
