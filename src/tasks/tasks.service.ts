@@ -7,10 +7,11 @@ import { Task, TaskDocument } from './entities/task.entity';
 
 @Injectable()
 export class TasksService {
-  constructor(@InjectModel(Task.name) private catModel: Model<TaskDocument>) {}
+  constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
 
   create(createTaskDto: CreateTaskDto) {
-    return 'This action adds a new task';
+    const createdTask = new this.taskModel({name:"Just Testing"});
+    return createdTask.save();
   }
 
   findAll() {
