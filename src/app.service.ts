@@ -6,6 +6,6 @@ import { Model } from "mongoose";
 export class AppService {
 
   getHello(): string {
-    return "Hello World!";
+    return "Bonjour nous sommes le groupe EasyGarden 🏡";
   }
 }
