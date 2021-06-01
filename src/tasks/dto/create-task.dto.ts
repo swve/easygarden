@@ -28,5 +28,5 @@ export class CreateTaskDto {
 
   @IsNotEmpty()
   @ApiProperty()
-  plantsIds: Array<string>;
+  plantsIds: Array<Object>;
 }

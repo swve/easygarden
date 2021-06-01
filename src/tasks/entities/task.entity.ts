@@ -21,7 +21,7 @@ export class Task {
   taskStatus: Boolean;
 
   @Prop()
-  plantsIds: Array<string>;
+  plantsIds: Array<Object>;
 
 }
 
