@@ -24,6 +24,11 @@ export class CommunityController {
     return this.communityService.findOne(+id);
   }
 
+  @Get("communityMap")
+  mapsWeb() {
+    return "<h1> Hello ! </h1>";
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCommunityDto: UpdateCommunityDto) {
     return this.communityService.update(+id, updateCommunityDto);
