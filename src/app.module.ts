@@ -13,6 +13,7 @@ const DB_HOST = process.env.MONGO_HOST || 'localhost';
 const DB_PORT = process.env.MONGO_PORT || '27017';
 const DB_NAME = process.env.MONGO_DB_NAME || 'easygarden';
 const DB_CONNECTION_STRING = `mongodb://${DB_CREDENTIALS}${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+console.log(DB_CONNECTION_STRING);
 
 @Module({
   imports: [
