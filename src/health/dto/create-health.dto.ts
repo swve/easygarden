@@ -10,10 +10,16 @@ export class CreateHealthDto {
   @IsNotEmpty()
   @ApiProperty()
   gardenGeo: string;
+
+  @IsNotEmpty()
+  @ApiProperty()
+  plantsIds: Array<string>;
   
   ville: string;
 
   meteo: string;
+
+  température: string;
 
   humidité: string;
 

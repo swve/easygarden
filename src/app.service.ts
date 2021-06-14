@@ -13,21 +13,24 @@ export class AppService {
    */
   trefle() {
     
-    return [
-      {
-        id: "tmt-2332098",
-        name: "Tomate",
-        family: "Solanacées",
-        best_temp: "20",
-        time_to_grow: "30",
-      },
-      {
-        id: "or-232098",
-        name: "Orange",
-        family: "Rutacées",
-        best_temp: "45",
-        time_to_grow: "20",
-      },
-    ];
+    return {
+      "Tomate":{
+          id: "tmt-2332098",
+          name: "Tomate",
+          family: "Solanacées",
+          best_temp: "20",
+          time_to_grow: "30", 
+        },
+      "Orange":
+        {
+          id: "or-232098",
+          name: "Orange",
+          family: "Rutacées",
+          best_temp: "45",
+          time_to_grow: "20",
+        },
+      };
+
+
   }
 }

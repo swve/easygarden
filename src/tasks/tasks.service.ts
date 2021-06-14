@@ -25,7 +25,7 @@ export class TasksService {
 
     // pass to the API to get precise geolocalisation and pass it to the Task Object
     createTaskDto.gardenPreciseGeo = await this.getCompleteAddress(sentGeo);
-    createTaskDto.plantsIds = this.appService.trefle();
+   // createTaskDto.plantsIds = this.appService.trefle();
     
     // save data to the mongoDB database
     const createdTask = new this.taskModel(createTaskDto);

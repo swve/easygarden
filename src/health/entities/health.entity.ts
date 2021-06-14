@@ -18,7 +18,12 @@ export class Health {
   meteo: string;
 
   @Prop()
+  température: string;
+
+  @Prop()
   humidité: string;
+
+  
  
 
 }

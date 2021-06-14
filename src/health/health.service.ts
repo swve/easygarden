@@ -34,24 +34,19 @@ export class HealthService {
     createHealthDto.ville = sentVille;
     
     var meteoG= new Array();
-
-     meteoG= await this.getMeteo(sentVille);
-
-
-    
+    meteoG= await this.getMeteo(sentVille);
     createHealthDto.meteo = meteoG['weather'][0]['main'];
-    createHealthDto.humidité=meteoG['main']['humidity'];
+    createHealthDto.humidité=meteoG['main']['humidity']+"%";
+    let tmp = parseInt(meteoG['main']['temp'])- 273;
+    createHealthDto.température= tmp.toString()+" °C";
 
+    createHealthDto.qualitéAir= await this.getPollution(sentLat, sentLon);
 
-
-    var qualiAirG= new Array();
-
-    qualiAirG= await this.getPollution(sentLat, sentLon);
-
-    createHealthDto.qualitéAir= qualiAirG['current']['pollution']['aqius'];
-    console.log(qualiAirG);
-    
+    let plante = createHealthDto.plantsIds;
+    console.log(this.appService.trefle()[""+plante+""]['best_temp']);
    
+    
+  
 
     // save data to the mongoDB database
     const createdHealth = new this.healthModel(createHealthDto);
@@ -74,8 +69,25 @@ export class HealthService {
 
   async getPollution(lat, lon) {
     // get the response from the API
-    const response = await axios.get("http://api.airvisual.com/v2/nearest_city?lat="+lat+"&lon="+lon+"&key=e9fcaa43-0b53-42d5-8219-d71319e993ce");   
-    return response['data']['data']; //probleme retour undefined et si on laisse juste la reponse c'est trop gros
+    const response = await axios.get("http://api.airvisual.com/v2/nearest_city?lat="+lat+"&lon="+lon+"&key=e9fcaa43-0b53-42d5-8219-d71319e993ce"); 
+    const qualiAirG=response['data']['data'];
+    let tmp;
+
+    if(parseInt(qualiAirG['current']['pollution']['aqius'])<=50){
+      tmp="Air bon : "+qualiAirG['current']['pollution']['aqius']+" aqi."
+    }else if(parseInt(qualiAirG['current']['pollution']['aqius'])<=100&&(parseInt(qualiAirG['current']['pollution']['aqius'])>50)){
+      tmp="Air modérement bon: "+qualiAirG['current']['pollution'][' aqius']+" aqi."
+    }else if(parseInt(qualiAirG['current']['pollution']['aqius'])<=150&&(parseInt(qualiAirG['current']['pollution']['aqius'])>100)){
+      tmp="Air insalubre pour les groupes sensibles : "+qualiAirG['current']['pollution']['aqius']+"aqi."
+    }else if(parseInt(qualiAirG['current']['pollution']['aqius'])<=200&&(parseInt(qualiAirG['current']['pollution']['aqius'])>150)){
+      tmp="Air malsain : "+qualiAirG['current']['pollution']['aqius']+" aqi."
+    }else if(parseInt(qualiAirG['current']['pollution']['aqius'])<=300&&(parseInt(qualiAirG['current']['pollution']['aqius'])>200)){
+      tmp="Air très malsain : "+qualiAirG['current']['pollution']['aqius']+" aqi."
+    }else if(parseInt(qualiAirG['current']['pollution']['aqius'])<=500&&(parseInt(qualiAirG['current']['pollution']['aqius'])>300)){
+      tmp="Air dangereux : "+qualiAirG['current']['pollution']['aqius']+" aqi."
+    }
+
+  return tmp;
   }
 
 

@@ -15,10 +15,16 @@ export class UpdateHealthDto extends PartialType(CreateHealthDto) {
     @ApiProperty()
     gardenGeo: string;
 
+    @IsNotEmpty()
+    @ApiProperty()
+    plantsIds: Array<string>;
+
     // Data from GEO API GOUV FR
     ville: string
 
     meteo: string;
+
+    température: string;
 
     humidité: string;
 
