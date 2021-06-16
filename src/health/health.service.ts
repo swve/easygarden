@@ -41,22 +41,23 @@ export class HealthService {
 
     let i = 0;
     createHealthDto.plantsIds.forEach((element) => {
-      console.log(i);
-      let infoTmp = this.appService.trefle(element)["best_temp"];
+      
+      let infoTmp = this.appService.trefle(element)[0]["best_temp"];
+      console.log(this.appService.trefle(element));
       if (parseInt(infoTmp) < tmp) {
         createHealthDto.planteInfo +=
           "Les " +
           element +
           "s ont besoin de " +
           (tmp - parseInt(infoTmp)) +
-          " °C en moins. ";
+          " °C de moins. ";
       } else if (parseInt(infoTmp) > tmp) {
         createHealthDto.planteInfo +=
           "Les " +
           element +
           "s ont besoin de " +
           (parseInt(infoTmp) - tmp) +
-          " °C en plus. ";
+          " °C de plus. ";
       } else if (parseInt(infoTmp) == tmp) {
         createHealthDto.planteInfo +=
           "Les " + element + "s sont à la bonne température. ";
