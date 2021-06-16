@@ -30,5 +30,9 @@ export class UpdateTaskDto extends PartialType(CreateTaskDto) {
 
   @IsNotEmpty()
   @ApiProperty()
-  plantsIds: Array<string>;
+  plantSearch: string;
+  
+  @ApiProperty()
+  @IsNotEmpty()
+  plant: Array<object>;
 }
