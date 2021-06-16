@@ -42,8 +42,24 @@ export class HealthService {
 
     createHealthDto.qualitéAir= await this.getPollution(sentLat, sentLon);
 
-    let plante = createHealthDto.plantsIds;
-    console.log(this.appService.trefle()[""+plante+""]['best_temp']);
+
+    createHealthDto.planteInfo="";
+
+    let i=0;
+    createHealthDto.plantsIds.forEach(element => {
+      console.log(i);
+      let infoTmp=this.appService.trefle()[""+element+""]['best_temp'];
+      if(parseInt(infoTmp)<tmp){
+        createHealthDto.planteInfo+="Les "+element+"s ont besoin de "+(tmp-parseInt(infoTmp))+" °C en moins. ";
+      }else if(parseInt(infoTmp)>tmp){
+        createHealthDto.planteInfo+="Les "+element+"s ont besoin de "+(parseInt(infoTmp)-tmp)+" °C en plus. ";
+      }else if(parseInt(infoTmp)==tmp){
+        createHealthDto.planteInfo+="Les "+element+"s sont à la bonne température. ";
+      }
+      i=i+1;
+    });
+    
+    
    
     
   
@@ -90,6 +106,7 @@ export class HealthService {
   return tmp;
   }
 
+  
 
   async findAll() {
     const health = await this.healthModel.find().exec();

@@ -30,5 +30,7 @@ export class UpdateHealthDto extends PartialType(CreateHealthDto) {
 
     qualitéAir: string;
 
+    planteInfo:string;
+
     
 }

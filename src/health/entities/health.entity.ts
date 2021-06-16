@@ -23,6 +23,9 @@ export class Health {
   @Prop()
   humidité: string;
 
+  @Prop()
+  planteInfo:string;
+
   
  
 

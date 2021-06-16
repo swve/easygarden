@@ -25,5 +25,7 @@ export class CreateHealthDto {
 
   qualitéAir: string;
 
+  planteInfo:string;
+
 
 }

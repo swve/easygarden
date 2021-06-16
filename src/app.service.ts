@@ -14,14 +14,14 @@ export class AppService {
   trefle() {
     
     return {
-      "Tomate":{
+      "tomate":{
           id: "tmt-2332098",
           name: "Tomate",
           family: "Solanacées",
           best_temp: "20",
           time_to_grow: "30", 
         },
-      "Orange":
+      "orange":
         {
           id: "or-232098",
           name: "Orange",
@@ -30,7 +30,5 @@ export class AppService {
           time_to_grow: "20",
         },
       };
-
-
   }
 }
