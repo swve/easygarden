@@ -12,6 +12,7 @@ export class AppService {
    * like the Trefle API would return
    * @returns Array of Plants
    */
+
   trefle(plant) {
     const sample_array = [
       {

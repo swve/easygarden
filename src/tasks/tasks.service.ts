@@ -26,6 +26,7 @@ export class TasksService {
 
     // pass to the API to get precise geolocalisation and pass it to the Task Object
     createTaskDto.gardenPreciseGeo = await this.getCompleteAddress(sentGeo);
+
     createTaskDto.plant = this.appService.trefle(sentPlant);
 
     

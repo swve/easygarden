@@ -24,6 +24,7 @@ export class HealthController {
     return this.healthService.findOne(+id);
   }
 
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHealthDto: UpdateHealthDto) {
     return this.healthService.update(+id, updateHealthDto);
