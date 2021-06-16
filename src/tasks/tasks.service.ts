@@ -22,10 +22,13 @@ export class TasksService {
   async create(createTaskDto: CreateTaskDto) {
     // get user provided data
     const sentGeo = createTaskDto.gardenGeo;
+    const sentPlant = createTaskDto.plantSearch
 
     // pass to the API to get precise geolocalisation and pass it to the Task Object
     createTaskDto.gardenPreciseGeo = await this.getCompleteAddress(sentGeo);
-   // createTaskDto.plantsIds = this.appService.trefle();
+
+    createTaskDto.plant = this.appService.trefle(sentPlant);
+
     
     // save data to the mongoDB database
     const createdTask = new this.taskModel(createTaskDto);
@@ -40,7 +43,7 @@ export class TasksService {
   async getCompleteAddress(geo) {
     // get the response from the API
     const response = await axios.get("https://api-adresse.data.gouv.fr/search/?q="+geo);
-    return response.data.features;
+    return response.data.features[0];
   }
 
   /**

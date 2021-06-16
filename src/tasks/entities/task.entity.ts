@@ -1,5 +1,5 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document } from "mongoose";
 
 export type TaskDocument = Task & Document;
 
@@ -21,8 +21,7 @@ export class Task {
   taskStatus: Boolean;
 
   @Prop()
-  plantsIds: Array<Object>;
-
+  plant: Array<object>;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

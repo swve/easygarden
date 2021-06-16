@@ -26,7 +26,13 @@ export class CreateTaskDto {
   @ApiProperty()
   taskStatus: Boolean;
 
+
+  @ApiProperty()
+  plant: Array<object>;
+
   @IsNotEmpty()
   @ApiProperty()
-  plantsIds: Array<Object>;
+  plantSearch: string;
+  
+  
 }
